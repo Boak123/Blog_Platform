@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Diaries - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #291c42;
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .search-container, .create-post-container, .profile-container {
+            margin-bottom: 20px;
+        }
+        .search-container input[type="text"],
+        .create-post-container input[type="text"],
+        .create-post-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-container button,
+        .create-post-container button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .search-container button:hover,
+        .create-post-container button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="home.html">Tech Diaries</a>
+        <div>
+            <a href="profile.html">Profile</a>
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Create Post Section -->
+        <div class="create-post-container" id="create-post">
+            <h2>Create a New Post</h2>
+            <form action="/create_post" method="post">
+                <input type="text" placeholder="Post Title" required>
+                <textarea placeholder="Write your post here..." rows="10" required></textarea>
+                <button type="submit">Post</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
