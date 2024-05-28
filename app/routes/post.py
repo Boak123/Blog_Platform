@@ -2,11 +2,11 @@
 
 from flask import Blueprint, request, render_template, redirect, url_for
 from flask_login import login_required, current_user
-from models import db, Post
+from models import db, Post, user
 
 post_bp = Blueprint('post', __name__)
 
-@posts_bp.route('/')
+@post_bp.route('/')
 def home():
     posts = Post.query.all()
     return render_template('posts/home.html', posts=posts)
@@ -30,7 +30,7 @@ def create_post():
         db.session.add(new_post)
         flash('Post created successfully!', 'success')
         db.session.commit()
-        return redirect(url_for('post.list_posts'))
+        return redirect(url_for('post.home'))
 
     return render_template('create_post.html')
 
