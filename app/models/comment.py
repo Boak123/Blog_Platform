@@ -3,7 +3,9 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 db = SQLAlchemy
+
 
 """Comment model"""
 class Comment( db.Model):
