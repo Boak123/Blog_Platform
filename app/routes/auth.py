@@ -33,7 +33,7 @@ def register():
         db.session.commit()
         return redirect(url_for('login'))
 
-    return render_template('register.html')
+    return render_template('landing_page.html')
 
                                                                                                                                    
 """ Route to login user """
