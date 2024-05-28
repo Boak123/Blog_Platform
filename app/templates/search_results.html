@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #31373d;
+            color: #fff;
+            padding: 1em;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 1em;
+            text-decoration: none;
+        }
+        .container {
+            margin: 2em auto;
+            max-width: 800px;
+            padding: 1em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 1em 0;
+        }
+        .post h2 {
+            margin: 0;
+        }
+        .post p {
+            margin: 0.5em 0 0;
+        }
+        .alert {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="create_post.html">Create Post</a>
+            <a href="/logout">Logout</a>
+        <form id="searchForm" style="display: inline;">
+            <input type="text" id="searchInput" name="search" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </nav>
+    <div class="container" id="searchResults">
+        <h1>Search Results</h1>
+        <div id="resultsContainer"></div>
+    </div>
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const searchTerm = document.getElementById('searchInput').value;
+            fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ search: searchTerm })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsContainer = document.getElementById('resultsContainer');
+                resultsContainer.innerHTML = ''; // Clear previous results
+                if (data.posts.length > 0) {
+                    data.posts.forEach(post => {
+                        const postDiv = document.createElement('div');
+                        postDiv.classList.add('post');
+                        postDiv.innerHTML = `
+                            <h2><a href="/post/${post.id}">${post.title}</a></h2>
+                            <p>${post.content.slice(0, 100)}...</p>
+                        `;
+                        resultsContainer.appendChild(postDiv);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<p>No posts found matching your search criteria.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching search results:', error);
+            });
+        });
+    </script>
+</body>
+</html>
