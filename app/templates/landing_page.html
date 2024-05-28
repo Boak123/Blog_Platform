@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Diaries</title>
+    <style>
+        body {
+            padding-top: 56px;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+        .navbar {
+            background-color: #31373d;
+            color: white;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+        }
+        .navbar-brand {
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+        }
+        .navbar-toggler {
+            display: none;
+            background-color: #31373d;
+            border: none;
+            color: white;
+            font-size: 1.2em;
+        }
+        .navbar-collapse {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .nav-item {
+            list-style: none;
+            margin-left: 1rem;
+            display: inline;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: inline-block;
+        }
+        .nav-link:hover {
+            background-color: #2f2a44;
+            border-radius: 5px;
+        }
+        button {
+            border-radius: 5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        main {
+            padding: 20px;
+            margin-top: 56px;
+        }
+        footer {
+            background-color: #31373d;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                display: none;
+                flex-direction: column;
+            }
+            .navbar-toggler {
+                display: block;
+            }
+            .navbar-toggler.active + .navbar-collapse {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="landing_page.html">Tech Diaries</a>
+        <button class="navbar-toggler" type="button" onclick="toggleNavbar()">☰</button>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">Our Story</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register.html" target="_self"><button type="submit">Get started</button></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Welcome to Tech Diaries Blogging Platform</h1>
+        <p>This is a place where you can read and share your thoughts on various topics.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Navbar Toggle -->
+    <script>
+        function toggleNavbar() {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            navbarCollapse.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
