@@ -31,9 +31,9 @@ def register():
         new_user = User(email=email, password=generate_password_hash(password, method='sha256'), name=name)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
-    return render_template('landing_page.html')
+    return render_template('register.html')
 
                                                                                                                                    
 """ Route to login user """
@@ -58,4 +58,4 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('landing_page'))
+    return redirect(url_for('auth.login'))
