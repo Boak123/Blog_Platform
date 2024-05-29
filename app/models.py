@@ -51,7 +51,7 @@ class Comment( db.Model):
 
 
 """search model"""
-class Search(db.model):
+class Search(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     query = db.Column(db.String(150), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
