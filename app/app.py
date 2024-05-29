@@ -20,6 +20,19 @@ def create_app():
         app.register_blueprint(search.bp)
         app.register_blueprint(user.bp)
 
+
         db.create_all()
+
         
     return app
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+
+if __name__ == '__main__':
+    app = create_app()
+    app.run(debug=True)
